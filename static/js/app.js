@@ -162,25 +162,32 @@ function drawGaugeChart(idNum) {
     
     var trace_gauge= [
         {
-            value: wash_freq,
+            domain:{x:[0,1], y:[0,1]},
+            value: parseFloat(wash_freq),
             title:{text:"Belly Button Washing Frequency"},
             type: "indicator",
-            mode: "gauge+number+delta",
-            delta:{reference: wash_freq},
+            mode: "gauge+number",
+
          gauge:{
              axis:{range:[null, 9]},
-             bar: {color: "darkblue"},
-             bgcolor: "white",
-             steps: [
-                 {range: [0,4.5], color: "cyan"},
-                {range: [4.5, 9], color:"royalblue"}
-             ]}
+                steps:[
+                    {range:[0,1], color: "lightyellow"},
+                    {range:[1,2],color: "red"},
+                    {range:[2,3],color: "orange"},
+                    {range:[3,4],color: "yellow"},
+                    {range:[4,5],color: "green"},
+                    {range:[5,6],color:"blue"},
+                    {range:[6,7], color:"violet"},
+                    {range:[7,8],color:"indigo"},
+                    {range:[8,9],color: "darkblue"},
+                ]}
+        
         }];
 
     var gauge_layout={
-        width: 600,
+        width: 700,
         height: 600,
-        margin: {t:0, b:0}
+        margin: {t:20, b:40, l:100, r:100}
     };
     var gauge_data =trace_gauge;
    Plotly.newPlot("gauge",gauge_data, gauge_layout);
