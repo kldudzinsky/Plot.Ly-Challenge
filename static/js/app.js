@@ -24,14 +24,14 @@ function populateDemoInfo(idNum) {
     // Log a change
     console.log("Pop: " + idNum);
 
-    // Just grab the one ID we want
+    //grab the ID 
     var metadataFilter = data.metadata.filter(item => item["id"] == idNum);
     console.log(`metaFilter length: ${metadataFilter.length}`);
 
-    // Clear out the data first
+    // Clear out the data 
     panelDemoInfo.html("");
 
-    // Fill it back in
+    // Fill 
     Object.entries(metadataFilter[0]).forEach(([key, value]) => panelDemoInfo.append("h6").text(`${key}: ${value}`) );
 };
 // Object Compare Function
@@ -63,13 +63,13 @@ function optionChanged(idNum) {
 
     //Draw the Bar Plot
      drawBarPlot(idNum);
-    
+
     // // Draw the Bubble Chart
     drawBubbleChart(idNum);
 
     // // Draw the Gauge Chart
     drawGaugeChart(idNum);
-};
+    };
 function drawBarPlot(idNum) {
     // Log a change
     console.log("Bar: " + idNum);
@@ -84,10 +84,12 @@ function drawBarPlot(idNum) {
     for (var i=0; i < sample_values.length; i++) {
         var otu_id = otu_ids[i];
         var otu_text = "OTU " + otu_id.toString();
-        var combinedObject = {"sample_values": sample_values[i], "otu_ids": otu_text, "otu_labels": otu_labels[i]};
+        var combinedObject = {"sample_values": sample_values[i], 
+                                "otu_ids": otu_text, 
+                                "otu_labels": otu_labels[i]};
         combinedList.push(combinedObject);
     };
-        //sort and slice
+    //sort and slice
     var sortedList = combinedList.sort(compareValues("sample_values", "desc"));
     var slicedList = sortedList.slice(0, 10);
     //reverse so we get top 10
